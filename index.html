@@ -1,0 +1,259 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script type="text/javascript" src="js/jquery-3.6.0.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/jquery.blockUI.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/ncalayer.js" charset="utf-8"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <title>Тестирование функционала NCALayer</title>
+</head>
+
+<body class="bg-nca">
+    <div class="container form-wrapper-nca py-5">
+        <form>
+            <span class="sample-title">Basics Bundle</span>
+            <h3 class="pb-3">sign әдісі және оның параметрлері / метод sign и его параметры</h3>
+
+            <div class="param-title">
+                <div>allowedStorages (міндетті/обязательный)</div>
+                <div class="description">Жүйеде табылған және тек белгіленген қоймалар NCALayer терезесінде көрсетіледі.
+                </div>
+                <div class="description">В окне будут отображаться только указанные типы хранилищ, если они будут
+                    обнаружены в системе</div>
+            </div>
+            <div class="wrap-input">
+                <div class="form-check">
+                    <input class="form-check-input" name="storage-check" type="checkbox" value="AKKaztokenStore"
+                        id="AKKaztokenStore">
+                    <label class="form-check-label" for="AKKaztokenStore">
+                        AKKaztokenStore
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="storage-check" type="checkbox" value="AKKZIDCardStore"
+                        id="AKKZIDCardStore">
+                    <label class="form-check-label" for="AKKZIDCardStore">
+                        AKKZIDCardStore
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="storage-check" type="checkbox" value="AKEToken72KStore"
+                        id="AKEToken72KStore">
+                    <label class="form-check-label" for="AKEToken72KStore">
+                        AKEToken72KStore
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="storage-check" type="checkbox" value="AKEToken5110Store"
+                        id="AKEToken5110Store">
+                    <label class="form-check-label" for="AKEToken5110Store">
+                        AKEToken5110Store
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="storage-check" type="checkbox" value="AKJaCartaStore"
+                        id="AKJaCartaStore">
+                    <label class="form-check-label" for="AKJaCartaStore">
+                        AKJaCartaStore
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="storage-check" type="checkbox" value="PKCS12" id="PKCS12" checked>
+                    <label class="form-check-label" for="PKCS12">
+                        PKCS12
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="storage-check" type="checkbox" value="JKS" id="JKS">
+                    <label class="form-check-label" for="JKS">
+                        JKS
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="storage-check" type="checkbox" value="AKAKEYStore"
+                        id="AKAKEYStore">
+                    <label class="form-check-label" for="AKAKEYStore">
+                        AKAKEYStore
+                    </label>
+                </div>
+            </div>
+
+            <div class="param-title">
+                <div>format (міндетті/обязательный)</div>
+            </div>
+            <div class="wrap-input">
+                <select class="form-select" aria-label="Default select example" id="signatureType">
+                    <option selected>Қолтаңбаның түрін таңдаңыз/Выберите тип подписи</option>
+                    <option value="xml">xml</option>
+                    <option value="cms">cms</option>
+                </select>
+            </div>
+
+            <div class="param-title">
+                <div>data (міндетті/обязательный)</div>
+            </div>
+            <div class="wrap-input">
+                <textarea class="form-control" id="dataToSign" rows="3"
+                    placeholder="Қол қоюға арналған деректерді енгізіңіз/Введите данные для подписи"></textarea>
+            </div>
+
+            <div class="param-title">
+                <div>signingParams (міндетті/обязательный)</div>
+            </div>
+            <div class="wrap-input">
+                <div class="label-input">decode - әдепкі мәні false. Егер true болса, data мәні base64-тен декодталады
+                </div>
+                <div class="label-input">decode - false по умолчанию. Если true, то data будет декодировано из
+                    base64</div>
+                <div class="form-radio">
+                    <label for="decodeRadio" class="radio-label">decode :</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="decode" id="decodeRadio1" value="true">
+                        <label class="form-check-label" for="decodeRadio1">
+                            true
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="decode" id="decodeRadio2" value="false"
+                            checked>
+                        <label class="form-check-label" for="decodeRadio2">
+                            false
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="wrap-input">
+                <div class="label-input">encapsulate - әдепкі мәні true болса, қол қойылатын деректі cms-ке салады. Егер
+                    false болса, detached қолтаңба шығады</div>
+                <div class="label-input">encapsulate - true по умолчанию, встраивает значение в cms. Если false, то
+                    будет detached</div>
+                <div class="form-radio">
+                    <label for="encapsulateRadio" class="radio-label">encapsulate :</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="encapsulate" id="encapsulateRadio1"
+                            value="true" checked>
+                        <label class="form-check-label" for="encapsulateRadio1">
+                            true
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="encapsulate" id="encapsulateRadio2"
+                            value="false">
+                        <label class="form-check-label" for="encapsulateRadio2">
+                            false
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="wrap-input">
+                <div class="label-input">digested - әдепкі мәні false. Егер true болса, кіретін дерек хэштелген. Қазірше
+                    ГОСТ Р. 3410-2015 үшін жұмыс істемейді. Аса қажеті жоқ болмаса қолданбаған дұрыс</div>
+                <div class="label-input">digested - false по умолчанию. Если true, то входящие данные уже
+                    захешированы. Пока не работает для ГОСТ Р. 3410-2015. Не рекомендуется использовать без
+                    необходимости</div>
+                <div class="form-radio">
+                    <label for="digestedRadio" class="radio-label">digested :</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="digested" id="digestedRadio1" value="true">
+                        <label class="form-check-label" for="digestedRadio1">
+                            true
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="digested" id="digestedRadio2" value="false"
+                            checked>
+                        <label class="form-check-label" for="digestedRadio2">
+                            false
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="wrap-input">
+                <div class="label-input">
+                    Белгіленген жағдайда tsp.pki.gov.kz қызметінің уақыт белгісі салынады. Жай ғана бос объект болып
+                    жіберіледі.
+                </div>
+                <div class="label-input">
+                    Пока пустой объект. Если указан, то будет добавлена метка времени сервиса tsp.pki.gov.kz.
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="tsa-profile" type="checkbox" value="tsaProfile"
+                        id="tsaProfile">
+                    <label class="form-check-label" for="tsaProfile">
+                        tsaProfile
+                    </label>
+                </div>
+            </div>
+
+            <div class="param-title">
+                <div>signerParams (міндетті/обязательный)</div>
+                <div class="description">Көрсетілген параметрлерге сәйкес сертификаттары бар кілттерді таңдау. Терезеде
+                    барлық сертификаттар көрсетіледі, бірақ тек берілген параметрлерге сәйкестерін ғана таңдауға болады
+                </div>
+                <div class="description">Выбор ключа(ей) с сертификатом с указанными параметрами. В окне будут
+                    отображаться
+                    все сертификаты, но только соответствующие параметрам будут активны для выбора.</div>
+            </div>
+            <div class="wrap-input">
+                <div class="label-input">
+                    extKeyUsageOids (міндетті) - кілттің кеңейтілген мәндері бар массив. Мысалы, қол қою үшін
+                    1.3.6.1.5.5.7.3.4-ті таңдауға болады, ал аутентификация үшін 1.3.6.1.5.5.7.3.2. Не болмаса <a
+                        href="https://root.gov.kz/oid/">OID РК-да</a> көрсетілген Пайдаланушыларға (1.2.398.3.3.4)
+                    сәйкес бір мәнді көрсетуге болады.
+                </div>
+                <div class="label-input">
+                    extKeyUsageOids (обязательный) - массив с расширенными значениями ключа. Например, можно выбрать для
+                    подписи 1.3.6.1.5.5.7.3.4, для аутентификации 1.3.6.1.5.5.7.3.2 и\или идентификаторы из ветки
+                    1.2.398.3.3.4 Пользователи в дереве <a href="https://root.gov.kz/oid/">OID РК</a>.
+                </div>
+                <textarea class="form-control" id="extKeyUsageOids" rows="3"
+                    placeholder="Үтір арқылы ажыратып енгізіңіз/Введите данные через запятую"></textarea>
+            </div>
+            <div class="wrap-input">
+                <div class="label-input">
+                    chain (міндетті емес) - тізбек құруға арналған, PEM түріндегі сертификаттардың массиві.
+                    Бос қалдырған жағдайда ҚР ҮКО-ның қазіргі сертификаттары қолданылады. Массив бос болса тізбекті
+                    құрудың қажеті болмайды.
+                </div>
+                <div class="label-input">
+                    chain (необязательный) - массив со списком сертификатов в PEM для построения цепочки. По умолчанию
+                    не нужно указывать, тогда будут активны только действующие сертификаты НУЦ РК. При указании пустого
+                    массива построение цепочки будет необязательно.
+                </div>
+                <textarea class="form-control" id="caCerts" rows="3"
+                    placeholder="Үтір арқылы ажыратып енгізіңіз/Введите данные через запятую"></textarea>
+            </div>
+
+            <div class="param-title">locale (міндетті емес/необязательный)</div>
+            <div class="wrap-input">
+                <div class="label-input">Интерфейс тілі. Бұл параметр толтырылмаса интерфейс қазақша шығады.</div>
+                <div class="label-input">Язык интерфейса. При отсутствии параметра по умолчанию используется казахский
+                    язык.</div>
+                <div class="form-radio">
+                    <label for="localeRadio" class="radio-label">locale :</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="locale" id="localeRadio1" value="kk" checked>
+                        <label class="form-check-label" for="localeRadio1">
+                            kk
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="locale" id="localeRadio2" value="ru">
+                        <label class="form-check-label" for="localeRadio2">
+                            ru
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <button type="button" onclick="sign();" class="btn btn-primary sample-btn mb-5">SIGN</button>
+            <textarea class="form-control" id="signature" rows="6" placeholder="Қол қойылған дерек / Подписанные данные"
+                readonly></textarea>
+        </form>
+    </div>
+</body>
+
+</html>
