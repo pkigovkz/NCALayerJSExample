@@ -62,6 +62,11 @@ async function request() {
 
     var caCertsString = document.getElementById("caCerts").value;
     var caCerts = caCertsString ? caCertsString.split(",") : null;
+    if (document.getElementById("buildChain").checked) {
+        caCert = caCertsString ? caCertsString.split(",") : null;
+    } else {
+        caCerts = [];
+    }
 
     var localeRadio = $('input[name=locale]:checked').val();
 
@@ -85,6 +90,10 @@ async function request() {
             },
             "locale": localeRadio
         }
+    }
+
+    if (selectedStorages.length == 0) {
+        delete signInfo.args.allowedStorages;
     }
 
     return connect().then((webSocket) => {

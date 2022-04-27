@@ -19,11 +19,12 @@
             <h3 class="pb-3">sign әдісі және оның параметрлері / метод sign и его параметры</h3>
 
             <div class="param-title">
-                <div>allowedStorages (міндетті/обязательный)</div>
+                <div>allowedStorages (міндетті емес/необязательный)</div>
                 <div class="description">Жүйеде табылған және тек белгіленген қоймалар NCALayer терезесінде көрсетіледі.
+                    Егер параметр жіберілмесе, онда Kalkancrypt–те қолдануға болатын барлық қойма түрлері, олар табылған жағдайда, көрсетілетін болады.
                 </div>
                 <div class="description">В окне будут отображаться только указанные типы хранилищ, если они будут
-                    обнаружены в системе</div>
+                    обнаружены в системе. Если параметр не задан, то будут отображены все поддерживаемые типы хранилищ в Kalkancrypt, если они будут обнаружены.</div>
             </div>
             <div class="wrap-input">
                 <div class="form-check">
@@ -62,7 +63,7 @@
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" name="storage-check" type="checkbox" value="PKCS12" id="PKCS12" checked>
+                    <input class="form-check-input" name="storage-check" type="checkbox" value="PKCS12" id="PKCS12">
                     <label class="form-check-label" for="PKCS12">
                         PKCS12
                     </label>
@@ -223,6 +224,13 @@
                     chain (необязательный) - массив со списком сертификатов в PEM для построения цепочки. По умолчанию
                     не нужно указывать, тогда будут активны только действующие сертификаты НУЦ РК. При указании пустого
                     массива построение цепочки будет необязательно.
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="build-chain" type="checkbox" value="buildChain"
+                        id="buildChain">
+                    <label class="form-check-label" for="buildChain">
+                        Тізбекті құру | Построить цепочку
+                    </label>
                 </div>
                 <textarea class="form-control" id="caCerts" rows="3"
                     placeholder="Үтір арқылы ажыратып енгізіңіз/Введите данные через запятую"></textarea>
