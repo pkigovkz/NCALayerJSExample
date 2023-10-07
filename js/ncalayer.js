@@ -1,4 +1,4 @@
-﻿var SOCKET_URL = 'wss://127.0.0.1:13579/';
+var SOCKET_URL = 'wss://127.0.0.1:13579/';
 var callback = null;
 var response;
 
@@ -61,11 +61,12 @@ async function request() {
     var extKeyUsageOids = extKeyUsageOidString ? extKeyUsageOidString.split(",") : [];
 
     var caCertsString = document.getElementById("caCerts").value;
-    var caCerts = caCertsString ? caCertsString.split(",") : null;
+    var caCerts;
     if (document.getElementById("buildChain").checked) {
-        caCert = caCertsString ? caCertsString.split(",") : null;
+        caCerts = caCertsString ? caCertsString.split(",") : null;
     } else {
-        caCerts = [];
+        caCerts = null;
+        // caCerts = []; // CertPathBuilder will not be invoked. Any certificate will be accepted.
     }
 
     var localeRadio = $('input[name=locale]:checked').val();
@@ -75,6 +76,9 @@ async function request() {
         tsaProfile = {};
     }
 
+    var iin = $('input[name=iin]').val();
+    var bin = $('input[name=bin]').val();
+    var serialNumber = $('input[name=serialNumber]').val();
 
     var signInfo = {
         "module": "kz.gov.pki.knca.basics",
@@ -86,6 +90,9 @@ async function request() {
             "signingParams": { decode, encapsulate, digested, tsaProfile },
             "signerParams": {
                 "extKeyUsageOids": extKeyUsageOids,
+                "iin": iin,
+                "bin": bin,
+                "serialNumber": serialNumber,
                 "chain": caCerts
             },
             "locale": localeRadio
@@ -155,4 +162,3 @@ function openDialog() {
         location.reload();
     }
 }
-
