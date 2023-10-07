@@ -91,6 +91,7 @@
                     <option selected>Қолтаңбаның түрін таңдаңыз/Выберите тип подписи</option>
                     <option value="xml">xml</option>
                     <option value="cms">cms</option>
+                    <option value="raw">raw</option>
                 </select>
             </div>
 
@@ -151,11 +152,9 @@
                 </div>
             </div>
             <div class="wrap-input">
-                <div class="label-input">digested - әдепкі мәні false. Егер true болса, кіретін дерек хэштелген. Қазірше
-                    ГОСТ Р. 3410-2015 үшін жұмыс істемейді. Аса қажеті жоқ болмаса қолданбаған дұрыс</div>
+                <div class="label-input">digested - әдепкі мәні false. Егер true болса, кіретін дерек хэштелген.</div>
                 <div class="label-input">digested - false по умолчанию. Если true, то входящие данные уже
-                    захешированы. Пока не работает для ГОСТ Р. 3410-2015. Не рекомендуется использовать без
-                    необходимости</div>
+                    захешированы.</div>
                 <div class="form-radio">
                     <label for="digestedRadio" class="radio-label">digested :</label>
                     <div class="form-check">
@@ -198,6 +197,17 @@
                 <div class="description">Выбор ключа(ей) с сертификатом с указанными параметрами. В окне будут
                     отображаться
                     все сертификаты, но только соответствующие параметрам будут активны для выбора.</div>
+            </div>
+            <div class="wrap-input">
+                <div class="label-input">ЖСН\ИИН</div>
+                <input type="text" class="form-control" id="iin" name="iin" maxlength="12"
+                    placeholder="IIN"></input>
+                <div class="label-input">БСН\БИН</div>
+                <input type="text" class="form-control" id="bin" name="bin" maxlength="12"
+                    placeholder="BIN"></input>
+                <div class="label-input">Сертификаттың сериялық нөмірі\Серийный номер сертификата</div>
+                <input type="text" class="form-control" id="serialNumber" name="serialNumber"
+                    placeholder="Serial number"></input>
             </div>
             <div class="wrap-input">
                 <div class="label-input">
