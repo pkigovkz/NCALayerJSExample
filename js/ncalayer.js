@@ -51,6 +51,12 @@ async function request() {
 
     var dataToSign = document.getElementById("dataToSign").value;
 
+    if (document.getElementById("isArray").checked) {
+        dataToSign = [
+            dataToSign
+        ];
+    }
+
     var decode = $('input[name=decode]:checked').val();
 
     var encapsulate = $('input[name=encapsulate]:checked').val();
@@ -97,6 +103,14 @@ async function request() {
             },
             "locale": localeRadio
         }
+    }
+
+    if (document.getElementById("isAllowExpired").checked) {
+        signInfo.args.signingParams.allowExpired = true;
+    }
+
+    if (document.getElementById("isAllowRevoked").checked) {
+        signInfo.args.signingParams.allowRevoked = true;
     }
 
     if (selectedStorages.length == 0) {

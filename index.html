@@ -99,6 +99,17 @@
                 <div>data (міндетті/обязательный)</div>
             </div>
             <div class="wrap-input">
+                <div class="label-input">xml немесе cms таңдағанда, бірнеше құжатқа қол қою үшін деректерді жиым ретінде жіберуге болады.</div>
+                <div class="label-input">При выборе xml или cms данные можно отправить в виде массива для подписи нескольких документов.</div>
+                <div class="form-check">
+                    <input class="form-check-input" name="is-array" type="checkbox" value="isArray"
+                        id="isArray">
+                    <label class="form-check-label" for="isArray">
+                        Деректерді жиым ретінде жіберу | Отправить данные в виде массива
+                    </label>
+                </div>
+            </div>
+            <div class="wrap-input">
                 <textarea class="form-control" id="dataToSign" rows="3"
                     placeholder="Қол қоюға арналған деректерді енгізіңіз/Введите данные для подписи"></textarea>
             </div>
@@ -185,6 +196,29 @@
                         id="tsaProfile">
                     <label class="form-check-label" for="tsaProfile">
                         tsaProfile
+                    </label>
+                </div>
+            </div>
+
+            <div class="wrap-input">
+                <div class="label-input">
+                    Келесі параметрлер жүйені сынау кезінде пайдалануға ғана арналған.
+                </div>
+                <div class="label-input">
+                    Следующие параметры используются только для тестирования системы.
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="is-allow-expired" type="checkbox" value="isAllowExpired"
+                        id="isAllowExpired">
+                    <label class="form-check-label" for="isAllowExpired">
+                        allowExpired
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="is-allow-revoked" type="checkbox" value="isAllowRevoked"
+                        id="isAllowRevoked">
+                    <label class="form-check-label" for="isAllowRevoked">
+                        allowRevoked
                     </label>
                 </div>
             </div>
