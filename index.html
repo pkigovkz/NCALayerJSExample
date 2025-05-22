@@ -223,6 +223,22 @@
                 </div>
             </div>
 
+            <div class="wrap-input">
+                <div class="label-input">
+                    Тек нақ қолтаңбаның өзін қайтаратын кезде қолданылады. Егер true болса, қол қоюшының сертификаты қоса беріледі.
+                </div>
+                <div class="label-input">
+                    Используется в случае, если возвращается только подпись. Если true, то будет добавлен сертификат подписанта.
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="is-output-cert" type="checkbox" value="isOutputCert" 
+                        id="isOutputCert" checked>
+                    <label class="form-check-label" for="isOutputCert">
+                        outputCert
+                    </label>
+                </div>
+            </div>
+
             <div class="param-title">
                 <div>signerParams (міндетті/обязательный)</div>
                 <div class="description">Көрсетілген параметрлерге сәйкес сертификаттары бар кілттерді таңдау. Терезеде
