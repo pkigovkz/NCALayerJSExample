@@ -140,10 +140,10 @@ async function request() {
                             unblockScreen();
                             if (responseBody.hasOwnProperty('result')) {
                                 var result = responseBody.result;
-                                if (result.hasOwnProperty('signature')) {
-                                    var signature = result.signature;
+                                if (result.hasOwnProperty('signatures')) {
+                                    var signatures = result.signatures;
                                     var certificate = result.certificate;
-                                    $("#signature").val(signature + "\n" + certificate);
+                                    $("#signature").val(signatures + "\n" + certificate);
                                 } else {
                                     $("#signature").val(result);
                                 }
