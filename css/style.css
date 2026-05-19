@@ -71,3 +71,12 @@
     color: #fff;
     line-height: 1.2;
 }
+
+.feature-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.feature-buttons .btn {
+    width: 100%;
+}

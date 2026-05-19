@@ -7,6 +7,25 @@ async function sign() {
     await request();
 }
 
+async function showSettings() {
+    await sendAccessoryCommand("showSettings");
+}
+
+async function showBundleManager() {
+    await sendAccessoryCommand("showBundleManager");
+}
+
+function sendAccessoryCommand(method) {
+    var msg = { module: "kz.gov.pki.ncalayerservices.accessory", method: method };
+
+    return connect().then((webSocket) => {
+        webSocket.send(JSON.stringify(msg));
+    })
+    .catch(function (err) {
+        console.log(err)
+    });
+}
+
 function connect() {
     if (connect.webSocket && connect.webSocket.readyState < 2) {
         console.log("reusing the socket connection [state = " + connect.webSocket.readyState + "]: " + connect.webSocket.url);
