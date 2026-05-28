@@ -72,9 +72,7 @@ async function request() {
     var dataToSign = document.getElementById("dataToSign").value;
 
     if (document.getElementById("isArray").checked) {
-        dataToSign = [
-            dataToSign
-        ];
+        dataToSign = dataToSign.replaceAll("\n", "").split(",");
     }
 
     var decode = $('input[name=decode]:checked').val();
